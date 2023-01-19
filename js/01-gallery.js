@@ -22,14 +22,26 @@ function createMarkupGalleryItems(galleryItems) {
     .join("");
 }
 
-console.log(galleryMarkup);
-
-const openModal = (event) => {
-  event.preventDefault();
-};
-
-// const instance = basicLightbox.create(` <img src="${}">`);
-
-// instance.show();
+//==============================================================
 
 galleryList.addEventListener("click", openModal);
+
+function openModal(e) {
+  e.preventDefault();
+
+  if (e.target.tagName !== "IMG") {
+    return;
+  }
+
+  const image = e.target.getAttribute("data-source");
+  const instance = basicLightbox.create(
+    ` <img src="${image}" width = "800" height = "600">`
+  );
+  instance.show();
+
+  galleryList.addEventListener("keydown", (e) => {
+    if (e.code === "Escape") {
+      instance.close();
+    }
+  });
+}
