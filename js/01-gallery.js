@@ -39,9 +39,12 @@ function openModal(e) {
   );
   instance.show();
 
-  galleryList.addEventListener("keydown", (e) => {
+  galleryList.addEventListener("keydown", closeModal);
+
+  function closeModal(e) {
     if (e.code === "Escape") {
+      galleryList.removeEventListener("keydown", closeModal);
       instance.close();
     }
-  });
+  }
 }
