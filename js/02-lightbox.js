@@ -16,7 +16,6 @@ function createMarkupGalleryItems(galleryItems) {
 }
 
 //=====================================================================
-
 const lightbox = new SimpleLightbox(".gallery a", {
   captionPosition: "bottom",
   captionsData: "alt",
